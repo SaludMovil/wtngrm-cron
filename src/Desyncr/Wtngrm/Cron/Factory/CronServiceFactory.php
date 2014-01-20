@@ -12,13 +12,14 @@ class CronServiceFactory extends Wtngrm\AbstractServiceFactory implements Factor
 
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-
         parent::createService($serviceLocator);
 
-        $gearman = $serviceLocator->get('Desyncr\Wtngrm\Cron\Worker\CronWorker');
+        $cron = $serviceLocator->get('Desyncr\Wtngrm\Cron\Worker\CronWorker');
         $options = isset($this->config[$this->configuration_key]) ? $this->config[$this->configuration_key] : array();
 
-        return new CronService($gearman, $options);
+
+        $class = new CronService($cron, $options, $serviceLocator);
+        return $class;
 
     }
 }

@@ -2,29 +2,41 @@
 namespace Desyncr\Wtngrm\Cron\Service;
 
 use Desyncr\Wtngrm\Service as Wtngrm;
-use Heartsentwined\Cron\Service\Cron;
 
 class CronService extends Wtngrm\AbstractService
 {
     protected $instance = null;
     protected $jobs = array();
 
-    public function __construct($options)
+    public function __construct($cron, $options, $sm)
     {
+        $this->instance = $cron;
+        $this->options = $options;
+        $this->sm = $sm;
     }
 
-    public function add($function, $worker, $schedule, $params = null, $target = null)
+    public function add($function, $worker, $target = null)
     {
-        $this->jobs[] = array('function' => $function, 'worker' => $worker,
-                            'schedule' => $schedule, 'params' => $params);
+        if (!isset($this->options['workers'][$function])) {
+            return;
+        }
+
+        $options = $this->options['workers'][$function];
+        $this->jobs[] = array('function' => $function,
+                            'worker' => $worker,
+                            'schedule' => $options['schedule'],
+                            'params' => array(
+                                $this->sm,
+                                $this->options
+                            ));
     }
 
     public function dispatch()
     {
         foreach ($this->jobs as $job)
         {
-
-            Cron::register(
+            $instance = $this->instance;
+            $instance::register(
                 $job['function'],
                 $job['schedule'],
                 $job['worker'],

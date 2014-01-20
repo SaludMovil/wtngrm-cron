@@ -2,6 +2,10 @@
 return array(
     'service_manager' => array(
         'factories' => array(
+            'Desyncr\Wtngrm\Cron\Service\CronService'  => 'Desyncr\Wtngrm\Cron\Factory\CronServiceFactory',
+            'Desyncr\Wtngrm\Cron\Worker\CronWorker' => function($sm) {
+                return new \Heartsentwined\Cron\Service\Cron();
+            }
         ),
     ),
 
