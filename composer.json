@@ -1,0 +1,41 @@
+{
+    "name": "desyncr/wtngrm-cron",
+    "version": "0.0.1",
+    "description": "Zend2 Module for Qeueuing/Background jobs",
+    "type": "module",
+    "license": "GPL-3.0+",
+    "homepage": "http://github.com/desyncr/wtngrm-cron",
+    "keywords": [
+        "zend2", "zf2", "module", "queue", "cron"
+    ],
+    "authors": [
+        {
+            "name": "Dario Cavuotti",
+            "email": "dc@syncr.com.ar",
+            "homepage": "http://me.syncr.com.ar",
+            "role": "Developer"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "http://github.com/desyncr/wtngrm.git"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.0",
+        "zendframework/zendframework": "2.*",
+        "desyncr/wtngrm": "0.1.*",
+        "heartsentwined/zf2-cron": "2.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.28",
+        "whatthejeff/nyancat-phpunit-resultprinter" : "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "Desyncr\\Wtngrm\\Cron": "src/"
+        }
+    }
+}
