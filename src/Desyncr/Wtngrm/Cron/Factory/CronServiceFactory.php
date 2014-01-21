@@ -17,9 +17,17 @@ class CronServiceFactory extends Wtngrm\AbstractServiceFactory implements Factor
         $cron = $serviceLocator->get('Desyncr\Wtngrm\Cron\Worker\CronWorker');
         $options = isset($this->config[$this->configuration_key]) ? $this->config[$this->configuration_key] : array();
 
-
         $class = new CronService($cron, $options, $serviceLocator);
-        return $class;
 
+        if (!isset($options['preload']) || $options['preload'] !== true) {
+            return $class;
+        }
+
+        foreach ($options['workers'] as $name => $val) {
+            $class->add($name, $val['handler']);
+        }
+        $class->dispatch();
+
+        return $class;
     }
 }

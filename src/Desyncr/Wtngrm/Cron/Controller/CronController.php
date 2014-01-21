@@ -1,11 +1,15 @@
 <?php
 namespace Desyncr\Wtngrm\Cron\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\Console\Request as ConsoleRequest;
 use Heartsentwined\Cron\Entity;
 use Heartsentwined\Cron\Repository;
+use Zend\Console\Request as ConsoleRequest;
+use Zend\Mvc\Controller\AbstractActionController;
 
+/**
+ * Class CronController
+ * @package Desyncr\Wtngrm\Cron\Controller
+ */
 class CronController extends AbstractActionController
 {
     /**
@@ -19,7 +23,12 @@ class CronController extends AbstractActionController
         }
         $cs = $this->getServiceLocator()->get('Desyncr\Wtngrm\Cron\Service\CronService');
 
-        // TODO read from configuration
-        // $cs->schedule('test', new \DateTime('tomorrow'));
+        $configuration = $this->getServiceLocator()->get('Config');
+        if (isset($configuration['wtngrm']['cron-adapter'])) {
+            $workers = $configuration['wtngrm']['cron-adapter']['workers'];
+            foreach ($workers as $name => $val) {
+                $cs->schedule($name, new \DateTime());
+            }
+        }
     }
 }
