@@ -3,36 +3,23 @@ namespace Desyncr\Wtngrm\Cron\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Console\Request as ConsoleRequest;
+use Heartsentwined\Cron\Entity;
+use Heartsentwined\Cron\Repository;
 
 class CronController extends AbstractActionController
 {
+    /**
+     * Registers cronjobs
+     */
     public function executeAction()
     {
         $request = $this->getRequest();
         if (!$request instanceof ConsoleRequest) {
             throw new \RuntimeException('You can call this action from a webspace');
         }
+        $cs = $this->getServiceLocator()->get('Desyncr\Wtngrm\Cron\Service\CronService');
 
-        $gs = $this->getServiceLocator()->get('Desyncr\Wtngrm\Cron\Service\CronService');
-
-        if (in_array($workerName, array_keys($workers)) && in_array(
-            'Desyncr\Wtngrm\Cron\CronInterface',
-            class_implements($workers[$workerName])
-        )) {
-            $worker = new $workers[$workerName];
-            $sm = $this->getServiceLocator();
-
-            $gs->add(
-                $workerName,
-                function ($job) use ($worker, $sm) {
-                    $worker->setUp($sm, $job);
-                    $worker->execute($job);
-                    $worker->tearDown();
-                }
-            );
-
-            while ($gs->dispatch()) {
-            }
-        }
+        // TODO read from configuration
+        // $cs->schedule('test', new \DateTime('tomorrow'));
     }
 }

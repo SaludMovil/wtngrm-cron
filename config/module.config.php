@@ -19,7 +19,7 @@ return array(
             'routes' => array(
                 'cron_route' => array(
                     'options' => array(
-                        'route' => 'cron execute',
+                        'route' => 'cron register',
                         'defaults' => array(
                             '__NAMESPACE__' => 'Desyncr\Wtngrm\Cron\Controller',
                             'controller' => 'Cron',
