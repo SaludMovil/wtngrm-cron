@@ -5,11 +5,27 @@ use Desyncr\Wtngrm\Service as Wtngrm;
 use Heartsentwined\Cron\Entity;
 use Heartsentwined\Cron\Repository;
 
+/**
+ * Class CronService
+ * @package Desyncr\Wtngrm\Cron\Service
+ */
 class CronService extends Wtngrm\AbstractService
 {
+    /**
+     * @var Object Backend library instance
+     */
     protected $instance = null;
+
+    /**
+     * @var array Defined jobs
+     */
     protected $jobs = array();
 
+    /**
+     * @param $cron
+     * @param $options
+     * @param $sm
+     */
     public function __construct($cron, $options, $sm)
     {
         $this->instance = $cron;
@@ -23,6 +39,8 @@ class CronService extends Wtngrm\AbstractService
      *
      * @param $name string job identifier
      * @param $when DateTime when to run the job
+     *
+     * @return null
      */
     public function schedule($name, $when)
     {
@@ -43,9 +61,11 @@ class CronService extends Wtngrm\AbstractService
     /**
      * Adds a worker for a given job.
      *
-     * @param $function String Job ID/name
-     * @param $worker String actual worker/class
-     * @param $target Null unused
+     * @param $function
+     * @param $worker
+     * @param null $target
+     *
+     * @return null
      */
     public function add($function, $worker, $target = null)
     {
@@ -66,6 +86,8 @@ class CronService extends Wtngrm\AbstractService
 
     /**
      * Dispatch defined workers
+     *
+     * @return null
      */
     public function dispatch()
     {
