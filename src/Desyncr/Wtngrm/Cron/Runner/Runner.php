@@ -8,8 +8,9 @@ class Runner {
     public static function run($sm, $function, $params)
     {
         $worker = new $function();
-        $worker->setUp($sm, $params);
-        $worker->execute($params);
+        if ($worker->setUp($sm, $params) !== false) {
+            $worker->execute($params);
+        }
         $worker->tearUp();
     }
 } 
