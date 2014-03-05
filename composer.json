@@ -1,6 +1,6 @@
 {
     "name": "desyncr/wtngrm-cron",
-    "version": "0.0.1",
+    "version": "0.1.1",
     "description": "Zend2 Module for Qeueuing/Background jobs",
     "type": "module",
     "license": "GPL-3.0+",
