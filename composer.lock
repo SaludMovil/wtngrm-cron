@@ -3,20 +3,20 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "7450f5eadd0f814e6e8fb3e898c1cf56",
+    "hash": "a24e88be3bf3411b497b6983210484a1",
     "packages": [
         {
             "name": "desyncr/wtngrm",
-            "version": "0.1.4",
+            "version": "0.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/desyncr/wtngrm.git",
-                "reference": "e2a325c317f8366ea5c62a62f9cafffe00abdacd"
+                "reference": "8964190596eefc6182f67eb4686e687669881144"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/desyncr/wtngrm/zipball/e2a325c317f8366ea5c62a62f9cafffe00abdacd",
-                "reference": "e2a325c317f8366ea5c62a62f9cafffe00abdacd",
+                "url": "https://api.github.com/repos/desyncr/wtngrm/zipball/8964190596eefc6182f67eb4686e687669881144",
+                "reference": "8964190596eefc6182f67eb4686e687669881144",
                 "shasum": ""
             },
             "require": {
@@ -24,7 +24,7 @@
                 "zendframework/zendframework": "2.*"
             },
             "require-dev": {
-                "phpunit/phpunit": "*"
+                "phpunit/phpunit": "3.7.*"
             },
             "type": "module",
             "autoload": {
@@ -43,7 +43,7 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Zend2 Module for Qeueuing/Background jobs servers",
+            "description": "Zend2 Module for Queueing/Background jobs servers",
             "homepage": "http://github.com/desyncr/wtngrm",
             "keywords": [
                 "beanstalk",
@@ -54,10 +54,10 @@
                 "zf2"
             ],
             "support": {
-                "source": "https://github.com/desyncr/wtngrm/tree/v0.1.4",
+                "source": "https://github.com/desyncr/wtngrm/tree/development",
                 "issues": "https://github.com/desyncr/wtngrm/issues"
             },
-            "time": "2014-03-01 19:38:21"
+            "time": "2014-03-04 23:31:54"
         },
         {
             "name": "doctrine/annotations",
