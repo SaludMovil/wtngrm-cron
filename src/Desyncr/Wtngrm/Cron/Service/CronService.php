@@ -17,8 +17,6 @@ use Desyncr\Wtngrm\Service\AbstractService;
 use Heartsentwined\Cron\Entity;
 use Heartsentwined\Cron\Repository;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use Desyncr\Wtngrm\Job\JobInterface;
-use Desyncr\Wtngrm\Cron\Service\CronServiceInterface;
 
 /**
  * Class CronService
